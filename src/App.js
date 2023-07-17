@@ -1,5 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
+import React from "react";
+import Weather from "./Weather";
 
 function App() {
   return (
@@ -7,8 +9,9 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+         Hello sunsh
         </p>
+        <Weather city="Paris"/>
         <a
           className="App-link"
           href="https://reactjs.org"
