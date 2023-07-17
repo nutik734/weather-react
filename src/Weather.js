@@ -1,18 +1,18 @@
-import React,{useState} from "react";
+import React from "react";
 import axios from 'axios';
 import Humidity from "./Humidity";
 import Forecast from "./Forecast";
 import image from "./images/image.png";
 
 export default function Weather(props) {
-         let [city, setCity] = useState("")
-        function handleResponse(event){
-        event.preventDefault();
+         function handleResponse(response){
+          //  alert (`This is degrees ${response.data.main.temp} in ${response.data.name}`)
+         }
+
         let apiKey = "094780c710fa4efd669f0df8c3991927";
         let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${props.city}&appid=${apiKey}&units=metric`
          axios.get(apiUrl).then(handleResponse);
-        }
-    
+        
     return (
     <div className="Weather">
       <div className="App">
@@ -42,7 +42,7 @@ export default function Weather(props) {
                 </form>
 
                 <div className="overview">
-                  <h1 id={city}>Barcelona, Spain</h1>
+                  <h1 id="city">Barcelona, Spain</h1>
                   <ul>
                     <li>
                       Last updated: <span id="date"></span>
@@ -77,16 +77,23 @@ export default function Weather(props) {
                     </div>
                   </div>
                   <div className="col-6">
-                    <Humidity />
+                    <Humidity city="Barcelona"/>
                   </div>
                 </div>
                 <div className="weather-forecast" id="forecast">
-                  <Forecast />
+                  <Forecast city="Barcelona"/>
                 </div>
               </div>
             </div>
           </div>
         </div>
+        <a
+                          href="#section"
+                          onClick={""}
+                          id="fahrenheit-link"
+                        >
+                          °F
+                        </a>
       </div>
     </div>
   );
