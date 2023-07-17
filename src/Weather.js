@@ -88,12 +88,13 @@ export default function Weather(props) {
           </div>
         </div>
         <a
-                          href="#section"
+                          href="https://github.com/nutik734/weather-react.git"
                           onClick={""}
                           id="fahrenheit-link"
                         >
-                          °F
+                          Open-source code 
                         </a>
+                        by Anna Slinkina
       </div>
     </div>
   );
