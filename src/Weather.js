@@ -58,7 +58,7 @@ export default function Weather(props) {
                       <span className="units">
                         <a
                           href="#section"
-                          onClick={""}
+                          onClick={handleResponse}
                           id="celsius-link"
                           className="active"
                         >
@@ -68,7 +68,7 @@ export default function Weather(props) {
                         |
                         <a
                           href="#section"
-                          onClick={""}
+                          onClick={handleResponse}
                           id="fahrenheit-link"
                         >
                           °F
@@ -89,8 +89,10 @@ export default function Weather(props) {
         </div>
         <a
                           href="https://github.com/nutik734/weather-react.git"
-                          onClick={""}
+                          onClick={handleResponse}
                           id="fahrenheit-link"
+                          target="_blank"
+                          rel="noopener noreferrer"
                         >
                           Open-source code 
                         </a>
