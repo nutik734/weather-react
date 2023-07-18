@@ -94,7 +94,7 @@ export default function Weather(props) {
                           target="_blank"
                           rel="noopener noreferrer"
                         >
-                          Open-source code 
+                          Open-source code  
                         </a>
                         by Anna Slinkina
       </div>
