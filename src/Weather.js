@@ -61,6 +61,7 @@ export default function Weather(props) {
                           onClick={handleResponse}
                           id="celsius-link"
                           className="active"
+                          rel="noopener noreferrer"
                         >
                           {" "}
                           °C
@@ -70,6 +71,7 @@ export default function Weather(props) {
                           href="#section"
                           onClick={handleResponse}
                           id="fahrenheit-link"
+                          rel="noopener noreferrer"
                         >
                           °F
                         </a>
