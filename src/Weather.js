@@ -19,7 +19,7 @@ export default function Weather(props) {
         <div className="container">
           <div className="weather-app">
             <div className="card d-flex">
-                
+
               <div className="card-body">
                 <form id="city-form" className="mb-3">
                   <div className="row">
@@ -90,6 +90,7 @@ export default function Weather(props) {
             </div>
           </div>
         </div>
+        <footer>
         <a
                           href="https://github.com/nutik734/weather-react.git"
                           onClick={handleResponse}
@@ -97,9 +98,10 @@ export default function Weather(props) {
                           target="_blank"
                           rel="noopener noreferrer"
                         >
-                          Open-source code  
+                          Open-source code   {" "}
                         </a>
                         by Anna Slinkina
+        </footer>
       </div>
     </div>
   );

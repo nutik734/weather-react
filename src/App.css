@@ -92,3 +92,7 @@ li::first-letter {
 .weather-forecast-temperatures {
   font-size: 13px;
 }
+footer{
+  font-size: 11px;
+  text-align: center;
+}
