@@ -19,6 +19,7 @@ export default function Weather(props) {
         <div className="container">
           <div className="weather-app">
             <div className="card d-flex">
+                
               <div className="card-body">
                 <form id="city-form" className="mb-3">
                   <div className="row">
