@@ -1,23 +1,36 @@
-import React from "react";
+import React,{useState} from "react";
 import axios from 'axios';
 import Humidity from "./Humidity";
 import Forecast from "./Forecast";
-import image from "./images/image.png";
+
 
 export default function Weather(props) {
+    
+    const [weather,setWeather]= useState({ready:false});
          function handleResponse(response){
-          //  alert (`This is degrees ${response.data.main.temp} in ${response.data.name}`)
-         }
-
-        let apiKey = "094780c710fa4efd669f0df8c3991927";
-        let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${props.city}&appid=${apiKey}&units=metric`
-         axios.get(apiUrl).then(handleResponse);
+            //console.log(response.data);
         
-    return (
-    <div className="Weather">
-      <div className="App">
-        <div className="container">
-          <div className="weather-app">
+          setWeather({
+            ready:true,
+            city:response.data.city,
+            country: response.data.country,
+            date:response.data.time,
+            temperature:response.data.temperature.current,
+            description:response.data.condition.description,
+            icon:response.data.condition.icon,
+            iconUrl: "http://shecodes-assets.s3.amazonaws.com/api/weather/icons/clear-sky-day.png",
+            wind:response.data.wind,
+           // humidity:response.data.temperature.humidity,
+
+        });
+          
+         }
+         if (weather.ready){
+           return (
+             <div className="Weather">
+             <div className="App">
+            <div className="container">
+            <div className="weather-app">
             <div className="card d-flex">
 
               <div className="card-body">
@@ -43,19 +56,19 @@ export default function Weather(props) {
                 </form>
 
                 <div className="overview">
-                  <h1 id="city">Barcelona, Spain</h1>
+                  <h1 id="city">{weather.city},{weather.country}</h1>
                   <ul>
                     <li>
-                      Last updated: <span id="date"></span>
+                      Last updated: {weather.time}<span id="date"></span>
                     </li>
-                    <li id="description">Rainy</li>
+                    <li id="description">{weather.description}</li>
                   </ul>
                 </div>
                 <div className="row">
                   <div className="col-6">
                     <div className="d-flex weather-temperature">
-                      <img src={image} alt="some-clouds" id="icon" />
-                      <strong id="temperature">22</strong>
+                      <img src={weather.iconUrl} alt={weather.description} id="icon" />
+                      <strong id="temperature">{Math.round(weather.temperature)}</strong>
                       <span className="units">
                         <a
                           href="#section"
@@ -105,5 +118,17 @@ export default function Weather(props) {
       </div>
     </div>
   );
+    }else{
+        const key = "0a49584f932f33a5d9ea5beto34a414d";
+        
+        let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${props.defaultCity}&key=${key}&units=metric`
+         axios.get(apiUrl).then(handleResponse);
+     return "Loading.."
+    }
+
 }
+
+        
+        
+    
 
