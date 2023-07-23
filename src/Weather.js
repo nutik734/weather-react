@@ -5,12 +5,11 @@ import Humidity from "./Humidity";
 import Forecast from "./Forecast";
 
 
+
 export default function Weather(props) {
-    
     const [weather,setWeather]= useState({ready:false});
+    const [city,setCity]=useState(props.defaultCity);
          function handleResponse(response){
-            //console.log(response.data);
-        
           setWeather({
             ready:true,
             city:response.data.city,
@@ -18,14 +17,27 @@ export default function Weather(props) {
             date:new Date(response.data.time *1000),
             temperature:response.data.temperature.current,
             description:response.data.condition.description,
-            icon:response.data.condition.icon,
-            iconUrl: "http://shecodes-assets.s3.amazonaws.com/api/weather/icons/clear-sky-day.png",
-            wind:response.data.wind,
-           // humidity:response.data.temperature.humidity,
-
+            icon:response.data.condition.icon_url,
+            wind:response.data.wind.speed,
+            humidity:response.data.temperature.humidity,
+            pressure:response.data.temperature.pressure,
         });
-          
          }
+
+         function search(){
+            const key = "0a49584f932f33a5d9ea5beto34a414d";
+            let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${key}&units=metric`
+            axios.get(apiUrl).then(handleResponse);
+         }
+        function handleSubmit(event){
+            event.preventDefault();
+            search();
+        }
+        function handleCityChange(event){
+        setCity(event.target.value);
+        //alert(city);
+        }
+
          if (weather.ready){
            return (
              <div className="Weather">
@@ -35,7 +47,7 @@ export default function Weather(props) {
             <div className="card d-flex">
 
               <div className="card-body">
-                <form id="city-form" className="mb-3">
+                <form onSubmit={handleSubmit} id="city-form" className="mb-3">
                   <div className="row">
                     <div className="col-9">
                       <input
@@ -44,6 +56,7 @@ export default function Weather(props) {
                         placeholder="Choose your city..."
                         className="form-control"
                         autoFocus="on"
+                        onChange={handleCityChange}
                       />
                     </div>
                     <div className="col-3">
@@ -68,11 +81,11 @@ export default function Weather(props) {
                 <div className="row">
                   <div className="col-6">
                     <div className="d-flex weather-temperature">
-                      <img src={weather.iconUrl} alt={weather.description} id="icon" />
+                       
+                       <img src={weather.icon} alt={weather.description} id="icon" />
                       <strong id="temperature">{Math.round(weather.temperature)}</strong>
                       <span className="units">
-                        <a
-                          href="#section"
+                        <a href="#section"
                           onClick={handleResponse}
                           id="celsius-link"
                           className="active"
@@ -82,8 +95,7 @@ export default function Weather(props) {
                           °C
                         </a>{" "}
                         |
-                        <a
-                          href="#section"
+                        <a href="#section"
                           onClick={handleResponse}
                           id="fahrenheit-link"
                           rel="noopener noreferrer"
@@ -94,9 +106,9 @@ export default function Weather(props) {
                     </div>
                   </div>
                   <div className="col-6">
-                    <Humidity city="Barcelona"/>
+                <Humidity data={weather}/>
                   </div>
-                </div>
+                  </div>
                 <div className="weather-forecast" id="forecast">
                   <Forecast city="Barcelona"/>
                 </div>
@@ -105,8 +117,7 @@ export default function Weather(props) {
           </div>
         </div>
         <footer>
-        <a
-                          href="https://github.com/nutik734/weather-react.git"
+        <a href="https://github.com/nutik734/weather-react.git"
                           onClick={handleResponse}
                           id="fahrenheit-link"
                           target="_blank"
@@ -120,13 +131,9 @@ export default function Weather(props) {
     </div>
   );
     }else{
-        const key = "0a49584f932f33a5d9ea5beto34a414d";
-        
-        let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${props.defaultCity}&key=${key}&units=metric`
-         axios.get(apiUrl).then(handleResponse);
+      search();
      return "Loading.."
     }
-
 }
 
         
