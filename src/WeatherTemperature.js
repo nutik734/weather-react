@@ -15,11 +15,10 @@ export default function WeatherTemperature(props){
         <div className= "Conversion">
         <strong id="temperature">{Math.round(props.celsius)}</strong>
                       <span className="units">
-                        °C|{" "}
+                        °C|
                         <a href="/"
                           onClick={convertToFahreinheit}
                           id="celsius-link"
-                          className="active"
                           rel="noopener noreferrer"
                         >
                         °F
