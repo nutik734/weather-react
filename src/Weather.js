@@ -84,7 +84,6 @@ export default function Weather(props) {
                     <div className="d-flex weather-temperature">
                        <img src={weather.icon} alt={weather.description} id="icon" />
                        <WeatherTemperature celsius={weather.temperature}/>
-                      
                     </div>
                   </div>
                   <div className="col-6">
