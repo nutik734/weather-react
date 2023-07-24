@@ -1,6 +1,7 @@
 import React,{useState} from "react";
 import axios from 'axios';
 import FormattedDate from "./FormattedDate";
+import WeatherTemperature from "./WeatherTemperature";
 import Humidity from "./Humidity";
 import Forecast from "./Forecast";
 
@@ -81,28 +82,9 @@ export default function Weather(props) {
                 <div className="row">
                   <div className="col-6">
                     <div className="d-flex weather-temperature">
-                       
                        <img src={weather.icon} alt={weather.description} id="icon" />
-                      <strong id="temperature">{Math.round(weather.temperature)}</strong>
-                      <span className="units">
-                        <a href="#section"
-                          onClick={handleResponse}
-                          id="celsius-link"
-                          className="active"
-                          rel="noopener noreferrer"
-                        >
-                          {" "}
-                          °C
-                        </a>{" "}
-                        |
-                        <a href="#section"
-                          onClick={handleResponse}
-                          id="fahrenheit-link"
-                          rel="noopener noreferrer"
-                        >
-                          °F
-                        </a>
-                      </span>
+                       <WeatherTemperature celsius={weather.temperature}/>
+                      
                     </div>
                   </div>
                   <div className="col-6">
