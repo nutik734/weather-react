@@ -8,7 +8,7 @@ export default function Humidity(props) {
           Humidity: <span id="humidity">{props.data.humidity}</span>%
         </li>
         <li>
-          Pressure: <span id="pressure">{props.data.pressure}mmHg</span>
+          Pressure: <span id="pressure">{props.data.pressure}hPa</span>
         </li>
         <li>
           Wind: <span id="wind">{Math.round(props.data.wind)}</span> km/h

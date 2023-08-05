@@ -75,7 +75,7 @@ export default function Weather(props) {
                   <h1 id="city">{weather.city},{weather.country}</h1>
                   <ul>
                     <li>
-                      Last update: <FormattedDate date={weather.date}/><span id="date"></span>
+                      <FormattedDate date={weather.date}/><span id="date"></span>
                     </li>
                     <li id="description">{weather.description}</li>
                   </ul>
@@ -92,7 +92,7 @@ export default function Weather(props) {
                   </div>
                   </div>
                 <div className="weather-forecast" id="forecast">
-                  <Forecast data={weather}/>
+                  <Forecast coordinates={weather.coordinates}/>
                 </div>
               </div>
             </div>
