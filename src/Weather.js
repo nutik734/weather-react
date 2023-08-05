@@ -13,6 +13,7 @@ export default function Weather(props) {
          function handleResponse(response){
           setWeather({
             ready:true,
+            coordinates: response.data.coordinates,
             city:response.data.city,
             country: response.data.country,
             date:new Date(response.data.time *1000),
@@ -91,7 +92,7 @@ export default function Weather(props) {
                   </div>
                   </div>
                 <div className="weather-forecast" id="forecast">
-                  <Forecast city="Barcelona"/>
+                  <Forecast data={weather}/>
                 </div>
               </div>
             </div>
