@@ -98,17 +98,7 @@ export default function Weather(props) {
             </div>
           </div>
         </div>
-        <footer>
-        <a href="https://github.com/nutik734/weather-react.git"
-                          onClick={handleResponse}
-                          id="fahrenheit-link"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          Open-source code   {" "}
-                        </a>
-                        by Anna Slinkina
-        </footer>
+        
       </div>
     </div>
   );
