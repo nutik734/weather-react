@@ -101,7 +101,7 @@ footer{
   text-align: center;
   color:#F7F1E7;
 }
-@media (min-width: 576px) {
+@media (min-width: 460px) {
   .units{ position:relative;
     top:45%;
 
