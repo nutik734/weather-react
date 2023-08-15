@@ -14,7 +14,7 @@ export default function WeatherTemperature(props){
     return(
         <div className= "Conversion">
         <strong id="temperature">{Math.round(props.celsius)}</strong>
-                      <span className="units">
+                      <span className="units d-inline-flex ">
                         °C|
                         <a href="/"
                           onClick={convertToFahreinheit}
