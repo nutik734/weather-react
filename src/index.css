@@ -3,3 +3,27 @@
     font-size: 16px;
     top: -45%;  
 }
+@media (min-width: 576px) {
+    .cards {
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-between;
+    }
+        .units {
+            position: relative;
+            font-size: 14px;
+            top: -65%;
+            right: -70%;
+        }
+        .weather-temperature strong {
+            font-size: 60px;
+        }
+        .weather-temperature img {
+                    margin-right: 0px;
+        }
+        .Humidity li{
+            font-size: 14px;
+            padding-right: 0px;
+        }
+        
+}
